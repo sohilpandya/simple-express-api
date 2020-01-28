@@ -54,12 +54,19 @@ exports.handler = function(event, context, callback) {
               width: 890,
               height: 748,
               uri: "https://example.com/iframe-contents",
-              label: "IFrameTest",
+              label: "Test iFrame",
               associatedObjectProperties: []
             }
           ]
         }
-      ]
+      ],
+      primaryAction: {
+        type: "IFRAME",
+        width: 890,
+        height: 748,
+        uri: "https://example.com/create-iframe-contents",
+        label: "Test iFrame"
+      }
     })
   });
 };
