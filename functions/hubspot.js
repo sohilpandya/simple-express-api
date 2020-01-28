@@ -8,7 +8,7 @@ exports.handler = function(event, context, callback) {
         body: JSON.stringify({
             "results": [{
                 "objectId": 245,
-                "title": "API-22: APIs working too fast",
+                "title": `${event.queryStringParameters.dealname}`,
                 "link": "http://example.com/1",
                 "created": "2016-09-15",
                 "priority": "HIGH",
