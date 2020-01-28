@@ -2,20 +2,25 @@ const axios = require('axios')
 
 exports.handler = function(event, context, callback) {
 
-    console.log('youre in lambda /actions')
 
 
     const id = event.queryStringParameters.associatedObjectId
     const uri = `https://api.hubapi.com/deals/v1/deal/${id}?hapikey=${process.env.HAPI_KEY}`
 
+    console.log(`youre in lambda /actions, ${uri}`)
 
-    axios.put(uri, {
-            body: JSON.stringify({
-                "properties": [{
-                    "name": "dealstage",
-                    "value": "838999"
+    axios({
+            url: uri,
+            method: "put",
+            headers: {
+                "Content-Type": "application/json"
+            }
+            data: {
+                properties: [{
+                    name: "dealstage",
+                    value: "838999"
                 }]
-            })
+            }
         })
         .then((res) => {
             res.statusCode === 200 ?
@@ -32,4 +37,5 @@ exports.handler = function(event, context, callback) {
                     })
                 })
         })
+        .catch(err => console.log(err))
 }
