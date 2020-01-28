@@ -7,7 +7,7 @@ exports.handler = function(event, context, callback) {
     const id = event.queryStringParameters.associatedObjectId;
     const uri = `https://api.hubapi.com/deals/v1/deal/${id}?hapikey=${process.env.HAPI_KEY}`;
 
-    console.log(`youre in lambda /actions, ${uri}`);
+    console.log(`youre in lambda /actions, ${uri}, params: ${event.queryStringParameters}`);
 
     axios({
             url: uri,
@@ -18,7 +18,7 @@ exports.handler = function(event, context, callback) {
             data: {
                 properties: [{
                     name: "dealstage",
-                    value: "838999"
+                    value: event.queryStringParameters.nextStageId || "838999"
                 }]
             }
         })
