@@ -5,10 +5,9 @@ exports.handler = function(event, context, callback) {
   console.log("youre in lambda ");
 
   const { pipeline, dealname, dealstage } = event.queryStringParameters;
-
   const pipelineURI = `https://api.hubapi.com/crm-pipelines/v1/pipelines/deals?hapikey=${process.env.HAPI_KEY}`;
   const getPipelineStages = axios.get(pipelineURI).then(res => {
-    console.log({ res, pipeline, dealname, dealstage });
+    console.log({ res: res.data.results, pipeline, dealname, dealstage });
     return callback(null, {
       statusCode: 200,
       body: JSON.stringify({
