@@ -10,9 +10,8 @@ exports.handler = function(event, context, callback) {
         console.log({ res: res.data.results, pipeline, dealname, dealstage });
 
         const currentPipeline = res.data.results.filter((i) => i.label === pipeline)[0]
-        const sortedStage = _.sortBy(currentPipeline.stages, 'displayOrder')
 
-        console.log(sortedStage)
+        console.log(currentPipeline)
         return callback(null, {
             statusCode: 200,
             body: JSON.stringify({
@@ -33,7 +32,7 @@ exports.handler = function(event, context, callback) {
                             type: "CONFIRMATION_ACTION_HOOK",
                             httpMethod: "GET",
                             uri: "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
-                            label: "Example action",
+                            label: "Move To Next Stage",
                             associatedObjectProperties: [
                                 "dealname",
                                 "dealstage",
@@ -42,17 +41,6 @@ exports.handler = function(event, context, callback) {
                             confirmationMessage: "Are you sure you want to run example action?",
                             confirmButtonText: "Yes",
                             cancelButtonText: "No"
-                        },
-                        {
-                            type: "ACTION_HOOK",
-                            httpMethod: "GET",
-                            uri: "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
-                            label: "no prompt action",
-                            associatedObjectProperties: [
-                                "dealname",
-                                "dealstage",
-                                "hs_object_id"
-                            ]
                         },
                         {
                             type: "IFRAME",
