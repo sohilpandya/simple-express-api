@@ -20,12 +20,12 @@ exports.handler = function(event, context, callback) {
                 "ticket_type": "Bug",
                 "updated": "2016-09-28",
                 "actions": [{
-                    "type": "ACTION_HOOK",
+                    "type": "CONFIRMATION_ACTION_HOOK",
                     "httpMethod": "GET",
                     "uri": "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
                     "label": "Example action",
                     "associatedObjectProperties": [
-                        "some_crm_property"
+                        "dealname"
                     ],
                     "confirmationMessage": "Are you sure you want to run example action?",
                     "confirmButtonText": "Yes",
