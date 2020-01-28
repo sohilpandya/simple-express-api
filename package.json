@@ -1,0 +1,23 @@
+{
+    "name": "hubspot-app-sandbox",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node ./app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/trussle/hubspot-app-sandbox.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/trussle/hubspot-app-sandbox/issues"
+    },
+    "homepage": "https://github.com/trussle/hubspot-app-sandbox#readme",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
