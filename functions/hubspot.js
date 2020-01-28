@@ -24,9 +24,6 @@ exports.handler = function(event, context, callback) {
                     "httpMethod": "GET",
                     "uri": "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
                     "label": "Example action",
-                    "associatedObjectProperties": [
-                        "dealname"
-                    ],
                     "confirmationMessage": "Are you sure you want to run example action?",
                     "confirmButtonText": "Yes",
                     "cancelButtonText": "No"
