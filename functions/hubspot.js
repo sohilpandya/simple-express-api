@@ -11,7 +11,7 @@ exports.handler = function(event, context, callback) {
 
         const currentStages = res.data.results.filter((i) => i.pipelineId.toLowerCase() === pipeline)[0].stages
         const currentStage = _.find(currentStages, (o) => { return o.stageId == dealstage; });
-        const nextStage = _.find(currentStages, (o) => { return o.stageId == (parseInt(currentStage.displayOrder) + 1).toString(); })
+        const nextStage = _.find(currentStages, (o) => { return o.displayOrder == (parseInt(currentStage.displayOrder) + 1).toString(); })
 
         console.log(currentStage, nextStage)
         return callback(null, {
@@ -33,7 +33,7 @@ exports.handler = function(event, context, callback) {
                     actions: [{
                             type: "CONFIRMATION_ACTION_HOOK",
                             httpMethod: "GET",
-                            uri: "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
+                            uri: `https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action?nextStageId=${nextStage.stageId}`,
                             label: "Move To Next Stage",
                             associatedObjectProperties: [
                                 "dealname",
