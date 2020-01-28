@@ -65,7 +65,7 @@ exports.handler = function(event, context, callback) {
         width: 890,
         height: 748,
         uri: "https://bat-staging.trussle.com/",
-        label: "Test iFrame"
+        label: "Bat Test"
       }
     })
   });
