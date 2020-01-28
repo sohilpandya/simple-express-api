@@ -74,7 +74,7 @@ exports.handler = function(event, context, callback) {
             "https://bat-staging.trussle.com/application/87c6b07f-97e8-44a4-bf40-19c5e28e7e84",
           label: "Submission"
         },
-        secondaryAction: {
+        primaryAction: {
           type: "IFRAME",
           width: 890,
           height: 748,
