@@ -9,9 +9,11 @@ exports.handler = function(event, context, callback) {
     const getPipelineStages = axios.get(pipelineURI).then(res => {
         console.log({ res: res.data.results, pipeline, dealname, dealstage });
 
-        const currentPipeline = res.data.results.filter((i) => i.label === pipeline)[0]
+        const currentStages = res.data.results.filter((i) => i.pipelineId.toLowerCase() === pipeline)[0].stages
+        const currentStage = _.find(currentStages, (o) => { return o.stageId == dealstage; });
+        const nextStage = _.find(currentStages, (o) => { return o.stageId == (currentStages.displayOrder++); })
 
-        console.log(currentPipeline)
+        console.log(currentStage, nextStage)
         return callback(null, {
             statusCode: 200,
             body: JSON.stringify({
