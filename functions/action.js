@@ -14,7 +14,7 @@ exports.handler = function(event, context, callback) {
             method: "put",
             headers: {
                 "Content-Type": "application/json"
-            }
+            },
             data: {
                 properties: [{
                     name: "dealstage",
