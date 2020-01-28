@@ -64,7 +64,7 @@ exports.handler = function(event, context, callback) {
         type: "IFRAME",
         width: 890,
         height: 748,
-        uri: "https://example.com/create-iframe-contents",
+        uri: "https://bat-staging.trussle.com/",
         label: "Test iFrame"
       }
     })
