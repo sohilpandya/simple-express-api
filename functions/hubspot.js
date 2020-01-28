@@ -8,11 +8,8 @@ exports.handler = function(event, context, callback) {
 
     const pipelineURI = `https://api.hubapi.com/crm-pipelines/v1/pipelines/deals?hapikey=${process.env.HAPI_KEY}`
     const getPipelineStages = axios.get(pipelineURI).then((res) => {
-        const currentPipeline = res.results.filter((i) => i.label === pipeline)
-        return _.orderBy(currentPipeline[0].stages, 'displayOrder');
-    }).then((currentStages) => {
-        console.log(currentStages)
-        callback(null, {
+        console.log({ res, pipeline, dealname, dealstage })
+        return callback(null, {
             statusCode: 200,
             body: JSON.stringify({
                 results: [{
