@@ -1,6 +1,9 @@
 const axios = require("axios");
 
 exports.handler = function(event, context, callback) {
+
+    // fetch the stages
+
     const id = event.queryStringParameters.associatedObjectId;
     const uri = `https://api.hubapi.com/deals/v1/deal/${id}?hapikey=${process.env.HAPI_KEY}`;
 

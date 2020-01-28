@@ -1,6 +1,18 @@
-exports.handler = function(event, context, callback) {
+const axios = require("axios");
+const _ = require("lodash");
 
-    console.log('youre in lambda ')
+exports.handler = function(event, context, callback) {
+    console.log('youre in lambda /hubspot')
+
+    const { pipeline, dealname, dealstage } = event.queryStringParameters
+
+    const pipelineURI = `https://api.hubapi.com/crm-pipelines/v1/pipelines/deals?hapikey=${process.env.HAPI_KEY}`
+    const getPipelineStages = axios.get(pipelineURI).then((res) => {
+        const currentPipeline = res.results.filter((i) => i.label === pipeline)
+        return _.orderBy(currentPipeline[0].stages, 'displayOrder');
+    })
+
+    console.log(getPipelineStages)
 
     console.log({ params: event.queryStringParameters, event })
     callback(null, {
@@ -24,11 +36,6 @@ exports.handler = function(event, context, callback) {
                         "httpMethod": "GET",
                         "uri": "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
                         "label": "Example action",
-                        "associatedObjectProperties": [
-                            "dealname",
-                            "dealstage",
-                            "hs_object_id"
-                        ],
                         "confirmationMessage": "Are you sure you want to run example action?",
                         "confirmButtonText": "Yes",
                         "cancelButtonText": "No"
@@ -38,11 +45,6 @@ exports.handler = function(event, context, callback) {
                         "httpMethod": "GET",
                         "uri": "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
                         "label": "no prompt action",
-                        "associatedObjectProperties": [
-                            "dealname",
-                            "dealstage",
-                            "hs_object_id"
-                        ]
                     }
                 ]
             }]
