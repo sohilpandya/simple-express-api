@@ -5,6 +5,8 @@ exports.handler = function(event, context, callback) {
     console.log({ params: event.queryStringParameters, event })
     callback(null, {
         statusCode: 200,
-        body: 'In Actions!'
+        body: JSON.stringify({
+            "message": "Successful GET request"
+        })
     });
 }
