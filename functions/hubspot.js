@@ -19,7 +19,18 @@ exports.handler = function(event, context, callback) {
                 "status": "In Progress",
                 "ticket_type": "Bug",
                 "updated": "2016-09-28",
-                "actions": []
+                "actions": [{
+                    "type": "ACTION_HOOK",
+                    "httpMethod": "GET",
+                    "uri": "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
+                    "label": "Example action",
+                    "associatedObjectProperties": [
+                        "some_crm_property"
+                    ],
+                    "confirmationMessage": "Are you sure you want to run example action?",
+                    "confirmButtonText": "Yes",
+                    "cancelButtonText": "No"
+                }]
             }]
         })
     });
