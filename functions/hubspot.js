@@ -24,6 +24,11 @@ exports.handler = function(event, context, callback) {
                         "httpMethod": "GET",
                         "uri": "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
                         "label": "Example action",
+                        "associatedObjectProperties": [
+                            "dealname",
+                            "dealstage",
+                            "hs_object_id"
+                        ],
                         "confirmationMessage": "Are you sure you want to run example action?",
                         "confirmButtonText": "Yes",
                         "cancelButtonText": "No"
@@ -34,7 +39,9 @@ exports.handler = function(event, context, callback) {
                         "uri": "https://hopeful-golick-30e6f5.netlify.com/.netlify/functions/action",
                         "label": "no prompt action",
                         "associatedObjectProperties": [
-                            "dealname"
+                            "dealname",
+                            "dealstage",
+                            "hs_object_id"
                         ]
                     }
                 ]
