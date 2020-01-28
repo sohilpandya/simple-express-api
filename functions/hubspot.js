@@ -11,7 +11,7 @@ exports.handler = function(event, context, callback) {
 
         const currentStages = res.data.results.filter((i) => i.pipelineId.toLowerCase() === pipeline)[0].stages
         const currentStage = _.find(currentStages, (o) => { return o.stageId == dealstage; });
-        const nextStage = _.find(currentStages, (o) => { return o.stageId == (currentStages.displayOrder++); })
+        const nextStage = _.find(currentStages, (o) => { return o.stageId == (parseInt(currentStages.displayOrder) + 1); })
 
         console.log(currentStage, nextStage)
         return callback(null, {
